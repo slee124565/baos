@@ -9,8 +9,18 @@ The SDK need:
 * CMake >= 3.0 +
   http://www.cmake.org/
 
+[source]
+----
+sudo apt-get -y update && sudo apt-get -y install cmake
+----
+
 * Boost C++ (Header only) +
   http://www.boost.org/
+
+[source]
+----
+sudo apt-get -y install libboost-all-dev
+----
 
 === Install toolchain
 
@@ -163,11 +173,20 @@ Be aware, that everytime raspi-config is executed and the serial shell is enable
 ====
 
 
-[Versions before Raspbian Jessie] Open /etc/inittab and out comment the usage for ttyAMA0.
+[Versions before Raspbian Jessie] 
+Open /etc/inittab and out comment the usage for ttyAMA0.
 To do so add a *#* at the start of the line with ttyAMA0.
 [source]
 ----
 sudo nano /etc/inittab
+----
+
+[Versions after Raspbian Jessie]
+With Raspbian Jessie, there is no inittab.
+Instead, use raspi-config. In the Advanced options is 
+A8 Serial Enable/Disable shell and kernel messages on the serial connection
+----
+sudo raspi-config
 ----
 
 Reboot it.
